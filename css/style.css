@@ -1841,14 +1841,16 @@ body._lock {
 
 .Benefits-body-blok-img {
   margin-bottom: 15px;
-  width: 75px;
+  width: 80px;
+  min-height: 80px;
   height: auto; }
   @media (max-width: 1280px) {
     .Benefits-body-blok-img {
       margin-bottom: calc(23px + -8 * ((100vw - 360px) / 920)); } }
   @media (max-width: 1720px) {
     .Benefits-body-blok-img {
-      width: 60px;
+      width: 65px;
+      min-height: 65px;
       margin-bottom: 17px; } }
   @media (max-width: 1520px) {
     .Benefits-body-blok-img {
@@ -2619,23 +2621,33 @@ body._lock {
   margin-top: 20px;
   margin-bottom: 109px;
   min-height: 10px;
-  overflow: hidden; }
+  overflow: hidden;
+  min-height: 396px; }
   @media (max-width: 1720px) {
     .invitations-body-blok {
       margin-top: 18px;
       -webkit-box-flex: 0;
       -ms-flex: 0 0 47.5%;
       flex: 0 0 47.5%;
-      margin-bottom: 95px; } }
+      margin-bottom: 95px;
+      min-height: 362px; } }
   @media (max-width: 1520px) {
     .invitations-body-blok {
       margin-top: 10px;
-      margin-bottom: 75px; } }
+      margin-bottom: 75px;
+      min-height: 316px; } }
+  @media (max-width: 1280px) {
+    .invitations-body-blok {
+      min-height: 304px; } }
+  @media (max-width: 1024px) {
+    .invitations-body-blok {
+      min-height: 29.5vw; } }
   @media (max-width: 767px) {
     .invitations-body-blok {
       -webkit-box-flex: 0;
       -ms-flex: 0 0 50%;
       flex: 0 0 50%;
+      min-height: 64.4vw;
       margin-top: 0; } }
 
 .invitations-body-blok img {
