@@ -195,15 +195,23 @@ if (menuLinks.length > 0) {
 
 const iconMenu = document.querySelector('.menu__icon');
 const menuBody = document.querySelector('.menu__body');
-if (iconMenu) {
+const header = document.querySelector('.heder');
+if (iconMenu && menuBody && header) {
 	iconMenu.addEventListener("click", function (e) {
-		/*if(iconMenu.classList.contains('_active')) {
-			iconMenu.classList.remove('_active');
-		}*/
 		document.body.classList.toggle('_lock');
 		iconMenu.classList.toggle('_active');
 		menuBody.classList.toggle('_active');
 	});
+	document.addEventListener( 'click', (e) => {
+		let withinBoundaries = e.composedPath().includes(menuBody);
+		let withinBoundaries2 = e.composedPath().includes(header);
+
+		if ( ! withinBoundaries && ! withinBoundaries2) {
+			document.body.classList.remove('_lock');
+			iconMenu.classList.remove('_active');
+			menuBody.classList.remove('_active');
+		}
+	})
 }
 
 
