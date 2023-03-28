@@ -6,13 +6,18 @@
 	<head>
 		<!-- Заголовок страницы в браузере -->
 		<title>Liki.Land</title>
-
-		
-
-		<link rel="stylesheet" href="css/style.css" />
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width">
 		<meta name="format-detection" content="telephone=no">
+		<meta name="description" content="
+			Mary's simple recipe for maple bacon donuts
+			makes a sticky, sweet treat with just a hint
+			of salt that you'll keep coming back for.
+		">
+		
+
+		<link rel="stylesheet" href="css/style.css" />
+
 	</head>
 	<!-- Отображаемое тело страницы -->
 	<body>
@@ -94,7 +99,7 @@
 								</div>
 							</div>
 							<div class="star-rating-body-reght">
-								<div class="star-rating-body-reght-blok ibg">
+								<div class="star-rating-body-reght-blok">
 									<img src="img/star-rating/1.png" alt="">
 								</div>
 							</div>
@@ -149,8 +154,10 @@
 							<div class="Vedeo-body-blok">
 								<img src="img/Vedeo/1.png" alt="">
 								<div class="Vedeo-body-blok-contant">
-									<div class="Vedeo-item Vedeo-item-1">
-										<iframe src="https://www.youtube.com/embed/Ltf7lV9fxyg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									<div class="Vedeo-item Vedeo-item-1 _vedeo-wrapper">
+										<video controls="">
+											<source data-video="video/video.mp4" src="img/plug.png" type="video/mp4" class="_video">
+										</video>
 										<span class="Vedeo-item-a">
 											<div class="Vedeo-body-button Vedeo-body-button-1">
 												<span class="Vedeo-body-button-span_1"></span>
@@ -255,8 +262,10 @@
 							<div class="Vedeo-body-blok">
 								<img src="img/Vedeo/1.png" alt="">
 								<div class="Vedeo-body-blok-contant">
-									<div class="Vedeo-item Vedeo-item-2">
-										<iframe src="https://www.youtube.com/embed/Ltf7lV9fxyg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									<div class="Vedeo-item Vedeo-item-2 _vedeo-wrapper">
+										<video controls="">
+											<source data-video="video/video.mp4" src="img/plug.png" type="video/mp4" class="_video">
+										</video>
 										<span class="Vedeo-item-a">
 											<div class="Vedeo-body-button Vedeo-body-button-2">
 												<span class="Vedeo-body-button-span_1"></span>
@@ -346,9 +355,10 @@
 					<div class="popup__text-b-min">
 						*Можно использовать в электронном виде или распечатать
 					</div>
-					<form action="#" class="popup-form">
+					<form action="#" class="popup-form _form">
 						<div class="popup-form-line">
-							<input autocomplete="off" placeholder="Ваш номер телефона*" type="tel" name="form[]" class="popup-input">
+							<input type="tel" data-tel-input maxlength="18" placeholder="Ваш номер телефона*" class="popup-input _req _input-placeholder" aria-label="tel">
+							<!--<input autocomplete="off" placeholder="Ваш номер телефона*" type="tel" name="form[]" class="popup-input _req _input-placeholder">-->
 						</div>
 						<div class="popup-form-button">
 							<button type="submit" class="popup-button">Заказать дизайн макет</button>
@@ -378,9 +388,10 @@
 					<div class="popup__text-b">
 						бесплатное оформление страницы компании в каталоге LIKILAND
 					</div>
-					<form action="#" class="popup-form">
+					<form action="#" class="popup-form _form">
 						<div class="popup-form-line">
-							<input autocomplete="off" placeholder="Ваш номер телефона*" type="tel" name="form[]" class="popup-input">
+							<!--<input autocomplete="off" placeholder="Ваш номер телефона*" type="tel" name="form[]" class="popup-input _req _input-placeholder">-->
+							<input type="tel" data-tel-input maxlength="18" placeholder="Ваш номер телефона*" class="popup-input _req _input-placeholder" aria-label="tel">
 						</div>
 						<div class="popup-form-button">
 							<button type="submit" class="popup-button">Заказать</button>
@@ -410,9 +421,10 @@
 					<div class="popup__text-b">
 						и мы свяжемся с Вами в ближайшее время
 					</div>
-					<form action="#" class="popup-form">
+					<form action="#" class="popup-form _form">
 						<div class="popup-form-line">
-							<input autocomplete="off" placeholder="Ваш номер телефона*" type="tel" name="form[]" class="popup-input">
+							<!--<input autocomplete="off" placeholder="Ваш номер телефона*" type="tel" name="form[]" class="popup-input _req _input-placeholder">-->
+							<input type="tel" data-tel-input maxlength="18" placeholder="Ваш номер телефона*" class="popup-input _req _input-placeholder" aria-label="tel">
 						</div>
 						<div class="popup-form-button">
 							<button type="submit" class="popup-button">Заказать</button>
