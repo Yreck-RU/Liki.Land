@@ -1,15 +1,15 @@
-function ibg(){
-		let ibg=document.querySelectorAll(".ibg");
+function ibg() {
+	let ibg = document.querySelectorAll(".ibg");
 	for (var i = 0; i < ibg.length; i++) {
-		if(ibg[i].querySelector('img')){
-			ibg[i].style.backgroundImage = 'url('+ibg[i].querySelector('img').getAttribute('src')+')';
+		if (ibg[i].querySelector('img')) {
+			ibg[i].style.backgroundImage = 'url(' + ibg[i].querySelector('img').getAttribute('src') + ')';
 		}
 	}
 }
 ibg();
 
 const heder = document.getElementById('_heder');
-window.addEventListener('scroll', function(){
+window.addEventListener('scroll', function () {
 	heder.classList.toggle('activ', window.scrollY > 0);
 });
 
@@ -24,7 +24,7 @@ const timeout = 300;
 if (popupLinks.length > 0) {
 	for (let i = 0; i < popupLinks.length; i++) {
 		const popupLink = popupLinks[i];
-		popupLink.addEventListener("click", function (e){
+		popupLink.addEventListener("click", function (e) {
 			const popupName = popupLink.getAttribute('href').replace('#', '');
 			const curentPopup = document.getElementById(popupName);
 			popupOpen(curentPopup);
@@ -37,7 +37,7 @@ const popupCloseIcon = document.querySelectorAll('.close-popup');
 if (popupCloseIcon.length > 0) {
 	for (let i = 0; i < popupCloseIcon.length; i++) {
 		const el = popupCloseIcon[i];
-		el.addEventListener('click', function (e){
+		el.addEventListener('click', function (e) {
 			popupClose(el.closest('.popup'));
 			e.preventDefault();
 		});
@@ -202,11 +202,11 @@ if (iconMenu && menuBody && header) {
 		iconMenu.classList.toggle('_active');
 		menuBody.classList.toggle('_active');
 	});
-	document.addEventListener( 'click', (e) => {
+	document.addEventListener('click', (e) => {
 		let withinBoundaries = e.composedPath().includes(menuBody);
 		let withinBoundaries2 = e.composedPath().includes(header);
 
-		if ( ! withinBoundaries && ! withinBoundaries2) {
+		if (!withinBoundaries && !withinBoundaries2) {
 			document.body.classList.remove('_lock');
 			iconMenu.classList.remove('_active');
 			menuBody.classList.remove('_active');
@@ -229,80 +229,80 @@ if (iconMenu && menuBody && header) {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    var phoneInputs = document.querySelectorAll('input[data-tel-input]');
+	var phoneInputs = document.querySelectorAll('input[data-tel-input]');
 
-    var getInputNumbersValue = function (input) {
-        // Return stripped input value — just numbers
-        return input.value.replace(/\D/g, '');
-    }
+	var getInputNumbersValue = function (input) {
+		// Return stripped input value — just numbers
+		return input.value.replace(/\D/g, '');
+	}
 
-    var onPhonePaste = function (e) {
-        var input = e.target,
-            inputNumbersValue = getInputNumbersValue(input);
-        var pasted = e.clipboardData || window.clipboardData;
-        if (pasted) {
-            var pastedText = pasted.getData('Text');
-            if (/\D/g.test(pastedText)) {
-                // Attempt to paste non-numeric symbol — remove all non-numeric symbols,
-                // formatting will be in onPhoneInput handler
-                input.value = inputNumbersValue;
-                return;
-            }
-        }
-    }
+	var onPhonePaste = function (e) {
+		var input = e.target,
+			inputNumbersValue = getInputNumbersValue(input);
+		var pasted = e.clipboardData || window.clipboardData;
+		if (pasted) {
+			var pastedText = pasted.getData('Text');
+			if (/\D/g.test(pastedText)) {
+				// Attempt to paste non-numeric symbol — remove all non-numeric symbols,
+				// formatting will be in onPhoneInput handler
+				input.value = inputNumbersValue;
+				return;
+			}
+		}
+	}
 
-    var onPhoneInput = function (e) {
-        var input = e.target,
-            inputNumbersValue = getInputNumbersValue(input),
-            selectionStart = input.selectionStart,
-            formattedInputValue = "";
+	var onPhoneInput = function (e) {
+		var input = e.target,
+			inputNumbersValue = getInputNumbersValue(input),
+			selectionStart = input.selectionStart,
+			formattedInputValue = "";
 
-        if (!inputNumbersValue) {
-            return input.value = "";
-        }
+		if (!inputNumbersValue) {
+			return input.value = "";
+		}
 
-        if (input.value.length != selectionStart) {
-            // Editing in the middle of input, not last symbol
-            if (e.data && /\D/g.test(e.data)) {
-                // Attempt to input non-numeric symbol
-                input.value = inputNumbersValue;
-            }
-            return;
-        }
+		if (input.value.length != selectionStart) {
+			// Editing in the middle of input, not last symbol
+			if (e.data && /\D/g.test(e.data)) {
+				// Attempt to input non-numeric symbol
+				input.value = inputNumbersValue;
+			}
+			return;
+		}
 
-        if (["7", "8", "9"].indexOf(inputNumbersValue[0]) > -1) {
-            if (inputNumbersValue[0] == "9") inputNumbersValue = "7" + inputNumbersValue;
-            var firstSymbols = (inputNumbersValue[0] == "8") ? "8" : "+7";
-            formattedInputValue = input.value = firstSymbols + " ";
-            if (inputNumbersValue.length > 1) {
-                formattedInputValue += '(' + inputNumbersValue.substring(1, 4);
-            }
-            if (inputNumbersValue.length >= 5) {
-                formattedInputValue += ') ' + inputNumbersValue.substring(4, 7);
-            }
-            if (inputNumbersValue.length >= 8) {
-                formattedInputValue += '-' + inputNumbersValue.substring(7, 9);
-            }
-            if (inputNumbersValue.length >= 10) {
-                formattedInputValue += '-' + inputNumbersValue.substring(9, 11);
-            }
-        } else {
-            formattedInputValue = '+' + inputNumbersValue.substring(0, 16);
-        }
-        input.value = formattedInputValue;
-    }
-    var onPhoneKeyDown = function (e) {
-        // Clear input after remove last symbol
-        var inputValue = e.target.value.replace(/\D/g, '');
-        if (e.keyCode == 8 && inputValue.length == 1) {
-            e.target.value = "";
-        }
-    }
-    for (var phoneInput of phoneInputs) {
-        phoneInput.addEventListener('keydown', onPhoneKeyDown);
-        phoneInput.addEventListener('input', onPhoneInput, false);
-        phoneInput.addEventListener('paste', onPhonePaste, false);
-    }
+		if (["7", "8", "9"].indexOf(inputNumbersValue[0]) > -1) {
+			if (inputNumbersValue[0] == "9") inputNumbersValue = "7" + inputNumbersValue;
+			var firstSymbols = (inputNumbersValue[0] == "8") ? "8" : "+7";
+			formattedInputValue = input.value = firstSymbols + " ";
+			if (inputNumbersValue.length > 1) {
+				formattedInputValue += '(' + inputNumbersValue.substring(1, 4);
+			}
+			if (inputNumbersValue.length >= 5) {
+				formattedInputValue += ') ' + inputNumbersValue.substring(4, 7);
+			}
+			if (inputNumbersValue.length >= 8) {
+				formattedInputValue += '-' + inputNumbersValue.substring(7, 9);
+			}
+			if (inputNumbersValue.length >= 10) {
+				formattedInputValue += '-' + inputNumbersValue.substring(9, 11);
+			}
+		} else {
+			formattedInputValue = '+' + inputNumbersValue.substring(0, 16);
+		}
+		input.value = formattedInputValue;
+	}
+	var onPhoneKeyDown = function (e) {
+		// Clear input after remove last symbol
+		var inputValue = e.target.value.replace(/\D/g, '');
+		if (e.keyCode == 8 && inputValue.length == 1) {
+			e.target.value = "";
+		}
+	}
+	for (var phoneInput of phoneInputs) {
+		phoneInput.addEventListener('keydown', onPhoneKeyDown);
+		phoneInput.addEventListener('input', onPhoneInput, false);
+		phoneInput.addEventListener('paste', onPhonePaste, false);
+	}
 });
 
 
@@ -344,7 +344,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		for (let i = 0; i < formFeqInputs.length; i++) {
 			let formFeqInput = formFeqInputs[i];
 
-			formFeqInput.parentElement.addEventListener( 'click', (e) => {
+			formFeqInput.parentElement.addEventListener('click', (e) => {
 				for (let i = 0; i < formFeqInputs.length; i++) {
 					let formFeqInput = formFeqInputs[i];
 					if (formFeqInput.classList.contains('_error')) {
@@ -423,7 +423,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Убирания плэйсхолдера при фокусе ---------------------------------------------------------------------------------
 
-const Forms =  document.querySelectorAll('._input-placeholder');
+const Forms = document.querySelectorAll('._input-placeholder');
 
 if (Forms) {
 	for (let i = 0; i < Forms.length; i++) {
@@ -469,10 +469,10 @@ if (vedeoWrappers) {
 
 		vedeoWrapper.addEventListener("click", function (e) {
 			let vedeo = vedeoWrapper.querySelector('._video');
-			
+
 			if (vedeo && vedeoWrapper && vedeoLoad) {
 				vedeo.src = vedeo.dataset.video;
-				vedeo.parentElement.load();
+				vedeo.load();
 				vedeoLoad = false;
 				vedeoWrapper.classList.add("_active");
 			}
